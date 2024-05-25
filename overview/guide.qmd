@@ -1,0 +1,735 @@
+---
+title: "Guide through Quarto"
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code"
+    code-copy: true
+    code-overflow: wrap
+    code-tools: true
+engine: julia
+---
+
+# Markdown basics
+
+## Overview
+
+Quarto is based on Pandoc and uses its variation of markdown as its underlying document syntax. Pandoc markdown is an extended and slightly revised version of John Gruber’s Markdown syntax.
+
+Markdown is a plain text format that is designed to be easy to write, and, even more importantly, easy to read:
+
+> A Markdown-formatted document should be publishable as-is, as plain text, without looking like it’s been marked up with tags or formatting instructions. – John Gruber
+
+This document provides examples of the most commonly used markdown syntax. See the full documentation of [Pandoc’s Markdown](https://pandoc.org/MANUAL.html#pandocs-markdown) for more in-depth documentation.
+
+## Text Formatting
+
+| Markdown Syntax                           | Output                                  |
+|-------------------------------------------|:----------------------------------------|
+| `*italics*, **bold**, ***bold italics***` | *italics*, **bold**, ***bold italics*** |
+| `superscript^2^ / subscript~2~`           | superscript^2^ / subscript~2~           |
+| `~~strikethrough~~`                       | ~~strikethrough~~                       |
+| `` `verbatim code` ``                     | `verbatim code`                         |
+
+: Some markdown syntax to know
+
+## Headings
+
+| Markdown Syntax   | Output          |
+|-------------------|:----------------|
+| `# Header 1`      | [Header 1]{.h1} |
+| `## Header 2`     | [Header 2]{.h2} |
+| `### Header 3`    | [Header 3]{.h3} |
+| `#### Header 4`   | [Header 4]{.h4} |
+| `##### Header 5`  | [Header 5]{.h5} |
+| `###### Header 6` | [Header 6]{.h6} |
+
+: Headings in Quarto markdown
+
+## Links and images
+
+| Markdown Syntax                                                      | Output                                                                                              |
+|----------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------|
+| `<https://quarto.org>`                                               | <https://quarto.org>                                                                                |
+| `[Quarto](https://quarto.org)`                                       | [Quarto](https://quarto.org)                                                                        |
+| `![A cool panda image](panda.png)`                                   | ![A cool panda image](../img/illustration_quarto_imd_insert.jpeg)                                   |
+| `[![A cool panda image](panda.png)](https://quarto.org)`             | [![A cool panda image](../img/illustration_quarto_imd_insert.jpeg)](https://quarto.org)             |
+| `[![](panda.png){fig-alt="A cool panda image"}](https://quarto.org)` | [![](../img/illustration_quarto_imd_insert.jpeg){fig-alt="A cool panda image"}](https://quarto.org) |
+
+## Lists
+
+## Tables
+
+[Markdown Syntax]{style="font-size: 24px"}
+
+``` default
+| Right | Left | Default | Center |
+|------:|:-----|---------|:------:|
+|   12  |  12  |    12   |    12  |
+|  123  |  123 |   123   |   123  |
+|    1  |    1 |     1   |     1  |
+```
+
+[Output]{style="font-size: 24px"}
+
+| Right | Left | Default | Center |
+|------:|:-----|---------|:------:|
+|    12 | 12   | 12      |   12   |
+|   123 | 123  | 123     |  123   |
+|     1 | 1    | 1       |   1    |
+
+## Sources code
+
+Code are inserted in Quarto mainly like in Rmarkdown. One major difference is the fact that it is possible to add a simple snippet of code in Quarto like by using simple three quotes: \`\`\`default
+
+[Markdown syntax]{style="font-size: 24px"}
+
+```` default
+    ```default
+    Code here
+    ```
+````
+
+[Output]{style="font-size: 24px"}
+
+``` default
+    Code here
+```
+
+Notice that we wrote `default`. That is used for a language that is not supported by Quarto directly, and without that `default`, it will considered as a code snippet:
+
+[Markdown syntax]{style="font-size: 24px"}
+
+```` default
+    ```
+    Code here
+    ```
+````
+
+[Output]{style="font-size: 24px"}
+
+```         
+    Code here
+```
+
+For a supported language, we use the following:
+
+[Markdown syntax]{style="font-size: 24px"}
+
+```` default
+
+    ```{.language-name}
+        code
+    ```
+````
+
+For example:
+
+```` default
+
+    ```{.python}
+        1 + 1
+    ```
+````
+
+``` python
+    1 + 1
+```
+
+This is still a code snippet.
+
+To insert a code that is supposed to run, we remove the `.` in the brackets:
+
+For example:
+
+```{python}
+    1 + 1
+```
+
+## Equations
+
+Use `$` delimiters for inline math and `$$` delimiters for display math. For example:
+
+| Markdown Syntax                | Output                       |
+|--------------------------------|:-----------------------------|
+| `inline math: $E = mc^{2}$`    | inline math: $E = mc^{2}$    |
+| `display math: $$E = mc^{2}$$` | display math: $$E = mc^{2}$$ |
+
+## Diagrams
+
+Quarto has native support for embedding Mermaid and Graphviz diagrams. This enables you to create flowcharts, sequence diagrams, state diagrams, gantt charts, and more using a plain text syntax inspired by markdown.
+
+Example:
+
+[Markdown syntax]{style="font-size: 24px"}
+
+```` default
+    ```{mermaid}
+flowchart LR
+A[Hard edge] --> B(Round edge)
+B --> C{Decision}
+C --> D[Result one]
+C --> E[Result two]
+```
+````
+
+[Output]{style="font-size: 24px"}
+
+```{mermaid}
+
+flowchart LR
+    A[Hard edge] --> B(Round edge)
+    B --> C{Decision}
+    C --> D[Result one]
+    C --> E[Result two]
+```
+
+### Mermaid
+
+Mermaid is a Javascript based diagramming and charting tool that uses Markdown-inspired text definitions and a renderer to create and modify complex diagrams.
+
+Mermaid diagrams use `%%` as their comment syntax, and so cell options are declared using `%%|`. Cell options must be included directly beneath the start of the diagram code chunk.
+
+Above we demonstrated a flowchart created with Mermaid, here is a sequence diagram (also embedded using a `{mermaid}` executable cell):
+
+```` default
+    ```{mermaid}
+sequenceDiagram
+participant Alice
+participant Bob
+Alice->>John: Hello John, how are you?
+loop Healthcheck
+    John->>John: Fight against hypochondria
+end
+Note right of John: Rational thoughts <br/>prevail!
+John-->>Alice: Great!
+John->>Bob: How about you?
+Bob-->>John: Jolly good!
+```
+````
+
+```{mermaid}
+sequenceDiagram
+participant Alice
+participant Bob
+Alice->>John: Hello John, how are you?
+loop Healthcheck
+    John->>John: Fight against hypochondria
+end
+Note right of John: Rational thoughts <br/>prevail!
+John-->>Alice: Great!
+John->>Bob: How about you?
+Bob-->>John: Jolly good!
+```
+
+### Graphviz
+
+The Graphviz layout programs take descriptions of graphs in a simple text language, and make diagrams in useful formats. Graphviz has many useful features for concrete diagrams, such as options for colors, fonts, tabular node layouts, line styles, hyperlinks, and custom shapes.
+
+Graphviz diagrams use `//` as their comment syntax, and so cell options are declared using `//|`. Cell options must be included directly beneath the start of the diagram code chunk.
+
+For example, here is a simple undirected graph created using graphviz:
+
+```` default
+    ::: {#fig-simple}
+
+    ```{dot}
+graph G {
+layout=neato
+run -- intr;
+intr -- runbl;
+runbl -- run;
+run -- kernel;
+kernel -- zombie;
+kernel -- sleep;
+kernel -- runmem;
+sleep -- swap;
+swap -- runswap;
+runswap -- new;
+runswap -- runmem;
+new -- runmem;
+sleep -- runmem;
+}
+```
+
+    This is a simple graph with Graphviz
+    :::
+````
+
+::: {#fig-simple}
+```{dot}
+    graph G {
+        layout=neato
+        run -- intr;
+        intr -- runbl;
+        runbl -- run;
+        run -- kernel;
+        kernel -- zombie;
+        kernel -- sleep;
+        kernel -- runmem;
+        sleep -- swap;
+        swap -- runswap;
+        runswap -- new;
+        runswap -- runmem;
+        new -- runmem;
+        sleep -- runmem;
+    }
+```
+
+This is a simple graph with Graphviz
+:::
+
+## Videos
+
+You can embed videos in documents using the `video` shortcode. For example, here we embed a YouTube video
+
+Here is an example:
+
+{{< video https://www.youtube.com/watch?v=EbAAmrB0luA&t >}}
+
+## Embeds
+
+It is possible to embed `.qmd` and `.ipynb` files into a Quarto document. [Here](), you can see examples of it. For HTML outputs, it is possible to embed `.pdf` files too.
+
+Here is an example:
+
+```{=html}
+<object data="../utility/illustration_embed_pdf_quarto.pdf" type="application/pdf" width="100%" height="100%" style="min-height:100vh;">
+    <p>It appears you don't have a PDF plugin for this browser.
+    No biggie... you can <a href="../utility/illustration_embed_pdf_quarto.pdf">click here to
+    download the PDF file.</a></p>
+</object>
+```
+## Callout Blocks
+
+Callouts are an excellent way to draw extra attention to certain concepts, or to more clearly indicate that certain content is supplemental or applicable to only some scenarios.
+
+### Callout Types
+
+There are five different types of callouts available.
+
+-   note
+-   warning
+-   important
+-   tip
+-   caution
+
+The color and icon will be different depending upon the type that you select. Here are what the various types look like in HTML output:
+
+::: {.callout-note collapse="true"}
+Note that there are five types of callouts, including: `note`, `warning`, `important`, `tip`, and `caution`.
+:::
+
+::: {.callout-tip collapse="true"}
+## Tip with Title
+
+This is an example of a callout with a title.
+:::
+
+::: {.callout-caution collapse="true"}
+## Expand To Learn About Collapse
+
+This is an example of a 'folded' caution callout that can be expanded by the user. You can use `collapse="true"` to collapse it by default or `collapse="false"` to make a collapsible callout that is expanded by default.
+:::
+
+### Markdown Syntax
+
+``` default
+::: {.callout-note}
+Note that there are five types of callouts, including:
+`note`, `warning`, `important`, `tip`, and `caution`.
+:::
+
+::: {.callout-tip}
+## Tip with Title
+
+This is an example of a callout with a title.
+:::
+
+::: {.callout-caution collapse="true"}
+## Expand To Learn About Collapse
+
+This is an example of a 'folded' caution callout that can be expanded by the user. You can use `collapse="true"` to collapse it by default or `collapse="false"` to make a collapsible callout that is expanded by default.
+:::
+```
+
+### Collapse
+
+You can create ‘folded’ callouts that can be expanded by the user by settings the collapse attribute on the callout. If you set `collapse=true`, the callout will be expandable, but will be collapsed by default. If you set `collapse=false`, the callout will be expandable, but will be expanded by default.
+
+### Appearance
+
+Callouts have 3 different looks you can use.
+
+|           |                                                                                                                 |
+|-----------|:----------------------------------------------------------------------------------------------------------------|
+| `default` | The default appearance with colored header and an icon.                                                         |
+| `simple`  | A lighter weight appearance that doesn’t include a colored header background.                                   |
+| `minimal` | A minimal treatment that applies borders to the callout, but doesn’t include a header background color or icon. |
+
+: Callouts looks {tbl-colwidths="\[25,75\]"}
+
+Please refer to the [quarto website](https://quarto.org/) for more information.
+
+# Languages supported by Quarto
+
+::: panel-tabset
+## Python
+
+As an example, we will try KNN on a quarto document:
+
+### Create and plot the dataset
+
+```{python}
+import matplotlib.pyplot as plt
+
+x = [4, 5, 10, 4, 3, 11, 14 , 8, 10, 12]
+y = [21, 19, 24, 17, 16, 25, 24, 22, 21, 21]
+classes = [0, 0, 1, 0, 0, 1, 1, 0, 1, 1]
+
+plt.scatter(x, y, c=classes)
+plt.show()
+```
+
+### Train the model
+
+```{python}
+from sklearn.neighbors import KNeighborsClassifier
+
+data = list(zip(x, y))
+knn = KNeighborsClassifier(n_neighbors=5)
+
+knn.fit(data, classes)
+```
+
+### Use it for classification
+
+```{python}
+new_x = 8
+new_y = 21
+new_point = [(new_x, new_y)]
+
+prediction = knn.predict(new_point)
+
+plt.scatter(x + [new_x], y + [new_y], c=classes + [prediction[0]])
+plt.text(x=new_x-1.7, y=new_y-0.7, s=f"new point, class: {prediction[0]}")
+plt.show()
+```
+
+## R
+
+### Air Quality
+
+Please refer to [quarto website](https://quarto.org/) for more.
+
+
+## Julia
+
+Here is a sample code:
+
+```{julia}
+using GLMakie, SGtSNEpi, SNAPDatasets
+
+GLMakie.activate!()
+
+g = loadsnap(:as_caida)
+y = sgtsnepi(g);
+show_embedding(y;
+  A = adjacency_matrix(g),        # show edges on embedding
+  mrk_size = 1,                   # control node sizes
+  lwd_in = 0.01, lwd_out = 0.001, # control edge widths
+  edge_alpha = 0.03 )             # control edge transparency
+```
+
+Please refer to [quarto website](https://quarto.org/) for more.
+
+## Observable Javascript
+
+Here is a sample code:
+
+```{ojs}
+Plot.rectY(filtered, 
+  Plot.binX(
+    {y: "count"}, 
+    {x: "body_mass_g", fill: "species", thresholds: 20}
+  ))
+  .plot({
+    facet: {
+      data: filtered,
+      x: "sex",
+      y: "species",
+      marginRight: 80
+    },
+    marks: [
+      Plot.frame(),
+    ]
+  }
+)
+```
+
+Please refer to [quarto website](https://quarto.org/) for more.
+:::
+
+
+# What can be done with Quarto ?
+
+::: panel-tabset
+
+## Documents
+
+With Quarto, we can create a wide range of different file formats. Here, we are going to talk about the most important ones.
+
+|                |                    |
+|--------------------------------|:-----------------------------|
+| HTML    |   [Example of html generation]()   |
+| PDF | [Example of pdf generation]() |
+| MS Word | [Example of MS Word generation]() |
+| Markdown | [Example of Markdown generation]() |
+| Typst | [Example of Typst generation]() |
+
+: {tbl-colwidths="\[20,80\]"}
+
+### HTML Documents
+
+Use the html format to create HTML output. For example:
+
+```default
+---
+title: "My document"
+format:
+  html:
+    toc: true
+    html-math-method: katex
+    css: styles.css
+---
+```
+
+We've already through how we generate HTML file with Quarto.
+Now, let's see how to publish the generated file
+
+The `quarto publish` command provides a straightforward way to publish documents to [Quarto Pub](https://quarto.org/docs/publishing/quarto-pub.html), [GitHub Pages](https://pages.github.com/), [Netlify](https://www.netlify.com/), and [Posit Connect](https://posit.co/products/enterprise/connect/).
+
+For example, here are the commands to publish `document.qmd` to each of these services:
+
+```default
+quarto publish quarto-pub document.qmd
+quarto publish gh-pages document.qmd
+quarto publish netlify document.qmd
+quarto publish connect document.qmd
+```
+
+### PDF Documents
+
+The YAML heading of Quarto PDF files are almost similar to Rmarkdown PDF files. The base syntax remains unchanged.
+
+Use the pdf format to create PDF output. For example:
+
+```default
+---
+title: "My document"
+format:
+  pdf:
+    toc: true
+    number-sections: true
+    colorlinks: true
+---
+```
+
+#### Prerequisites
+
+In order to create PDFs you will need to install a recent distribution of TeX. We recommend the use of TinyTeX (which is based on TexLive), which you can install with the following command:
+
+```default
+quarto install tinytex
+```
+
+#### Document Class
+
+Quarto uses [KOMA Script](https://ctan.org/pkg/koma-script) document classes by default for PDF documents and books. KOMA-Script classes are drop-in replacements for the standard classes with an emphasis on typography and versatility.
+
+For PDF documents this results in the following Pandoc options set by default:
+
+```default
+title: "My document"
+format:
+  pdf:
+    toc: true
+    number-sections: true
+    colorlinks: true
+    documentclass: scrartcl
+    papersize: letter
+```
+
+You can set `documentclass` to the standard `article`, `report` or `book` classes, to the KOMA Script equivalents `scrartcl`, `scrreprt`, and `scrbook` respectively, or to any other class made available by LaTeX packages you have installed.
+
+::: {.callout-note}
+Setting your `documentclass` to either `book` or `scrbook` will automatically handle many of the common needs for printing and binding PDFs into a physical book (i.e., chapters start on odd pages, alternating margin sizes, etc).
+:::
+
+### MS Word Documents
+
+The YAML heading and base syntax are generally the same as Rmarkdown
+
+Use the `docx` format to create MS Word output. For example:
+
+```default
+---
+title: "My Document"
+format:
+  docx:
+    toc: true
+    number-sections: true
+    highlight-style: github
+---
+```
+
+## Presentations
+
+Quarto supports a variety of formats for creating presentations, including:
+
+|                |                    |
+|--------------------------------|:-----------------------------|
+| revealjs    |   [reveal.js](https://revealjs.com/) (HTML)   |
+| pptx | [PowerPoint](https://quarto.org/docs/presentations/powerpoint.html) (MS Office) |
+| beamer | [Beamer](https://ctan.org/pkg/beamer) (LaTeX/PDF) |
+
+: {tbl-colwidths="\[20,80\]"}
+
+There are pros and cons to each of these formats. The most capable format by far is `revealjs`, so it is highly recommended unless you have specific Office or LaTeX output requirements. Note that `revealjs` presentations can be presented as HTML slides or can be printed to PDF for easier distribution.
+
+PowerPoint and beamer generation are similar to what is done in Rmarkdown.
+
+You can create Revealjs presentations using the `revealjs` format.
+
+```default
+---
+title: "My document"
+author: "Guerzoniansu"
+format: revealjs
+---
+```
+
+### Demo
+
+```default
+---
+title: "My document"
+author: "Guerzoniansu"
+format: revealjs
+---
+
+## Getting up
+
+- Turn off alarm
+- Get out of bed
+
+## Going to sleep
+
+- Get in bed
+- Count sheep
+```
+
+{{< embed ../examples/creating_slide_presentation_revaljs.qmd >}}
+
+## Dashboards
+
+::: {.callout-note}
+This feature is new in Quarto 1.4. Download the latest version of Quarto at the [download page](https://quarto.org/docs/download/)
+:::
+
+Quarto Dashboards make it easy to create interactive dashboards using Python, R, Julia, and Observable:
+
+* Publish a group of related data visualizations as a dashboard. Use a wide variety of components including [Plotly](https://plotly.com/python/), [Leaflet](https://ipyleaflet.readthedocs.io/en/latest/), [Jupyter Widgets](https://quarto.org/docs/interactive/widgets/jupyter.html), [htmlwidgets](https://www.htmlwidgets.org/); static graphics (Matplotlib, Seaborn, ggplot2, etc.); tabular data; value boxes; and text annotations.
+
+* Flexible and easy to specify row and column-based Layouts. Components are intelligently re-sized to fill the browser and adapted for display on mobile devices.
+
+* Author using any notebook editor (JupyterLab, etc.) or in plain text markdown with any text editor (VS Code, RStudio, Neovim, etc.)
+
+* Dashboards can be deployed as static web pages (no special server required) or you can optionally integrate a backend Shiny Server for enhanced interactivity.
+
+### Examples
+
+You can create highly customized layouts and use a wide variety of dashboard themes.
+Please refer to the [dashboard examples](https://quarto.org/docs/dashboards/examples/) page on Quarto Guide
+
+### Walkthrough
+
+Learning to make Dashboards in Quarto can be pretty complex. So here are steps, you could follow to improve quickly
+
+#### Step 1: Install the latest version of Quarto
+
+Here is the [link](https://quarto.org/docs/download/prerelease.html).
+
+#### Step 2: Learn the basics
+
+Start by learning how to lay out your dashboard and populate it with content:
+
+[Dashboard Layout](https://quarto.org/docs/dashboards/layout.html) shows you how to control the navigation bar, and how to arrange your content across pages, rows, columns, tabsets, and cards.
+
+[Data Display](https://quarto.org/docs/dashboards/data-display.html) shows you how to display data in your dashboard as plots, tables, value boxes, and text.
+
+#### Step 3: Explore further
+
+Once you’ve mastered the basics, check out these additional articles to learn more.
+
+<a class="guide" href="https://quarto.org/docs/dashboards/#getting-started">Get started</a>
+
+
+## Websites and books
+
+We will discuss about websites only but know books are created the exact way websites are made in editors.
+
+### Quick Start
+
+First, you need to choose a text editor. In the following, we will tell the steps to create a quarto website project in VS Code.
+
+To create a new website project within VS Code, execute the **Quarto: Create Project** command from the command-palette:
+
+<img src="../img/illustration_create_quarto_website_project_vscode.png" alt="Illustration create quarto website project in vs code"  class="img-illu-quarto demo-vscode-webproject">
+
+Then, select **Website Project**:
+
+<img src="../img/illustration_create_quarto_website_project_vscode_2.png" alt="Illustration create quarto website project in vs code 2"  class="img-illu-quarto demo-vscode-webproject-2">
+
+You’ll be prompted to select a parent directory to create the project within. Then, you’ll be asked to name the directory for your website project:
+
+<img src="../img/illustration_create_quarto_website_project_vscode_3.png" alt="Illustration create quarto website project in vs code 3"  class="img-illu-quarto demo-vscode-webproject-3">
+
+The new website project will be created and opened within VS Code. Click the Render button to preview the website:
+
+<img src="../img/illustration_create_quarto_website_project_vscode_4.png" alt="Illustration create quarto website project in vs code 4"  class="img-illu-quarto demo-vscode-webproject-4">
+
+Now navigate through this [site](https://quarto.org/docs/websites/) for more informations...
+
+:::
+
+## Rendering
+
+To render documents, there are several ways.
+
+On R:
+
+To render the document, we click on the **render** button.
+<img src="../img/illustration_render_document_r_quarto.png" alt="Illustration render quarto documents in R"  class="img-illu-quarto demo-render-quarto-doc-r">
+
+To preview the document, we click on the **visual** button
+
+<img src="../img/illustration_preview_document_r_quarto.png" alt="Illustration preview quarto documents in R"  class="img-illu-quarto demo-preview-quarto-doc-r">
+
+On other editors:
+
+We need to run these on the terminal:
+
+```default
+quarto preview (for preview)
+quarto render (for render)
+```
+
+Now, fell free to see our work and all the code in the projects tab
+
+<a class="guide" href="../project.qmd">See project files</a>
+
+
+
+
+

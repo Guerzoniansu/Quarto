@@ -1,0 +1,50 @@
+{
+  "about.qmd": {
+    "about.html": "c41b88dd"
+  },
+  "index.qmd": {
+    "index.html": "ab06617f"
+  },
+  "contact.qmd": {
+    "contact.html": "960b2076"
+  },
+  "project.qmd": {
+    "project.html": "c10c9319"
+  },
+  "help.qmd": {
+    "help.html": "1199e63b"
+  },
+  "overview.qmd": {
+    "overview.html": "f8d0196c",
+    "overview.typ": "5e9af8d5"
+  },
+  "overview/guide.qmd": {
+    "guide.html": "fcc7da47"
+  },
+  "overview/start.qmd": {
+    "start.html": "9a5518fe"
+  },
+  "overview/render.qmd": {
+    "render.html": "e00b3780"
+  },
+  "demo/ipynb/quarto_demo.ipynb": {
+    "quarto_demo.html": "23dc8acb"
+  },
+  "examples/creating_slide_presentation_revaljs.qmd": {
+    "creating_slide_presentation_revaljs.embed.ipynb": "407737ef",
+    "creating_slide_presentation_revaljs.html": "af5e296b"
+  },
+  "examples/creating_slide_presentation_revaljs.embed.ipynb": {
+    "creating_slide_presentation_revaljs.embed-preview.html": "755c0a5e"
+  },
+  ".quarto/embed/examples/creating_slide_presentation_revaljs.embed.ipynb": {
+    "creating_slide_presentation_revaljs.embed-preview.html": "5c8e8a2e"
+  },
+  "demo/qmd/quarto_pdf.qmd": {
+    "quarto_pdf.html": "d09ca424",
+    "quarto_pdf.embed.ipynb": "e65d5bab"
+  },
+  "beamer/beamer/beamer-presentation.qmd": {
+    "beamer-presentation.tex": "36c72d56"
+  }
+}
