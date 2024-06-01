@@ -44,13 +44,17 @@ website:
       contents:
         - href: "project.qmd"
           text: Quarto
+        - href: "projects/gtsummary/gtsummary.qmd"
+          text: GTSummary
+        - href: "projects/rexcel/rexcel.qmd"
+          text: R to Excel
 
 format:
   html:
     theme: 
       light: flatly
       dark: darkly
-    fontsize: 18px
+    fontsize: 16px
     css: "css/styles.css"
     toc: true
 

@@ -1,0 +1,17 @@
+---
+title: "Quarto Gallery"
+---
+
+Here is the gallery of the Quarto project. We give you here all we achieved through the work and the documents including source code links
+
+[![Quarto dashboard](../../img/illustration_gallery_quarto_dashboard.png){fig-alt="A cool dashboard on covid 19 data series done with quarto"}](https://guerzoniansu.github.io/Quarto-Dashboard/#all)
+
+
+[![Quarto book](../../img/illustration_gallery_quarto_book.png){fig-alt="A cool dashboard on covid 19 data series done with quarto"}](https://guerzoniansu.github.io/Quarto-Book/)
+
+[Github repository for the book](https://github.com/Guerzoniansu/Quarto-Book)
+
+[Github repository for website](https://github.com/Guerzoniansu/Quarto-Site)
+
+
+

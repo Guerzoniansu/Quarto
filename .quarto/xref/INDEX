@@ -42,9 +42,83 @@
   },
   "demo/qmd/quarto_pdf.qmd": {
     "quarto_pdf.html": "d09ca424",
-    "quarto_pdf.embed.ipynb": "e65d5bab"
+    "quarto_pdf.embed.ipynb": "e65d5bab",
+    "quarto_pdf.tex": "430cccd3",
+    "quarto_pdf.docx": "25f8ed59"
   },
   "beamer/beamer/beamer-presentation.qmd": {
     "beamer-presentation.tex": "36c72d56"
+  },
+  "projects/gtsummary.qmd": {
+    "gtsummary.html": "be870a38"
+  },
+  "projects/rexcel.qmd": {
+    "rexcel.html": "776ca64e"
+  },
+  "projects/gtsummary/gtsummary.qmd": {
+    "gtsummary.html": "4b888c56"
+  },
+  "projects/quarto/gallery.qmd": {
+    "gallery.html": "4e1e88ba"
+  },
+  "projects/quarto/html/html.qmd": {
+    "html.html": "ab11a11e"
+  },
+  "projects/quarto/msword/msword.qmd": {
+    "msword.html": "734188f3"
+  },
+  "projects/quarto/pdf/pdf.qmd": {
+    "pdf.html": "22dacfa6"
+  },
+  "projects/quarto/pptx/pptx.qmd": {
+    "pptx.html": "96bbfd23"
+  },
+  "projects/rexcel/rexcel.qmd": {
+    "rexcel.html": "ad12d1dc"
+  },
+  "projects/gtsummary/gallery.qmd": {
+    "gallery.html": "6bd46385"
+  },
+  "projects/gtsummary/html/html.qmd": {
+    "html.html": "1ea28611"
+  },
+  "projects/gtsummary/msword/msword.qmd": {
+    "msword.html": "e0f71835"
+  },
+  "projects/gtsummary/pdf/pdf.qmd": {
+    "pdf.html": "96bb5163"
+  },
+  "projects/gtsummary/pptx/pptx.qmd": {
+    "pptx.html": "6b385c98"
+  },
+  "projects/rexcel/gallery.qmd": {
+    "gallery.html": "dbf53d39"
+  },
+  "projects/rexcel/html/html.qmd": {
+    "html.html": "5d8209d2"
+  },
+  "projects/rexcel/msword/msword.qmd": {
+    "msword.html": "c8dd1d45"
+  },
+  "projects/rexcel/pdf/pdf.qmd": {
+    "pdf.html": "11f5db83"
+  },
+  "projects/rexcel/pptx/pptx.qmd": {
+    "pptx.html": "84f33f8b"
+  },
+  "beamer/images/presentation_beamer_final.qmd": {
+    "presentation_beamer_final.tex": "2040c0b7"
+  },
+  "beamer/Baamer_Quarto.qmd": {
+    "Baamer_Quarto.html": "042cd6b6"
+  },
+  "beamer/images/beamer-presentation.qmd": {
+    "beamer-presentation.tex": "ae443a00"
+  },
+  "pdf/Document/PDF_Quarto.qmd": {
+    "PDF_Quarto.tex": "fb5d0d3c"
+  },
+  "dashboard/dashboard.qmd": {
+    "dashboard.html": "cec978b0"
   }
 }

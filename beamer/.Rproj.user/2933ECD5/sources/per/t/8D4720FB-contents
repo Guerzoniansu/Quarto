@@ -1,0 +1,400 @@
+---
+title: "Quarto Presentation"
+author: "Cheikh Sadibou NGom"
+date: '28/05/2024'
+format:
+  beamer:
+    theme: "AnnArbor"
+    colortheme: "dolphin"
+    fonttheme: "structurebold"
+    keep_tex: true
+    toc: false
+    slide_level: 3
+    latex_engine: xelatex
+header-includes: "\\hypersetup{colorlinks=true, urlcolor=blue}
+\\usepackage{mathptmx}
+\\usepackage[french,]{babel}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
+\\usepackage[table, xcdraw, dvipsnames]{xcolor}
+\\usepackage{graphicx}
+\\usepackage{hyperref}"
+editor_options:
+  markdown:
+    wrap: 72
+---
+
+# Plan
+
+-   Introduction
+-   Utilisation de Quarto
+-   Présentation de l'environnement Quarto
+-   Personnalisation du document
+-   Formats de sortie avec Quarto
+-   Autres elements
+-   Applications
+
+------------------------------------------------------------------------
+
+# **Introduction**
+
+Notre objectif dans cette présentation est d'explorer les différentes
+façons de présenter un document sur Quarto. Un bon environnement qui est
+très pratique et simple à utiliser contrairement à Rmarkdown qui nous
+fait écrire des codes et perdre du temps. Nous allons ainsi voir comment
+produire un bon document avec Quarto, en d'autres termes que doit-on
+savoir pour produire un bon document Quarto ? La répone se trouve dans
+la suite
+
+------------------------------------------------------------------------
+
+# **Definition de Quarto**
+
+Quarto est une extence de Markdown, uilisé pour la creation de
+documents. Elle permet entre autre :
+
+-   Formatage de texte;
+
+-   Insertion d'image, de diagramme et de graphiques;
+
+-   Generer des graphiques à partir de R et d'autres language;
+
+-   Citation et reference bibliographiques
+
+-   Exportations vers differents formats
+
+------------------------------------------------------------------------
+
+# **Objectifs de Quarto**
+
+Les objectifs principaux de Quarto incluent :
+
+-   Facilité d'utilisation et praticité;
+-   Fonctionnalités complètes pour les documents scientifiques;
+-   Flexibilité et personnalisation;
+-   Accessibilité et collaboration.
+
+En résumé, les objectifs clés de Quarto sont de fournir aux utilisateurs
+un environnement simple, puissant et flexible pour la création de
+documents scientifiques de haute qualité.
+
+------------------------------------------------------------------------
+
+# **Avantages de Quarto**
+
+Quelques avantages de Quarto pour les utilisateurs:
+
+-   Interface visuelle intuitive qui rend la création de documents
+    accessible à tous, même aux utilisateurs novices en programmation.
+-   Formatage de texte riche avec une variété de styles, de titres, de
+    listes et de tableaux pour structurer le contenu.
+-   Intégration transparente avec des langages de programmation tels que
+    R, Python et JavaScript pour étendre les capacités de Quarto.
+-   Partage aisé des documents entre collaborateurs pour une relecture,
+    des commentaires et une révision efficaces. ---
+
+------------------------------------------------------------------------
+
+# Comparaison avec Rmarkdown
+
+## Polyvalence des Langages :
+
+Support multi-langages : Quarto supporte plusieurs langages de
+programmation (R, Python, Julia, Observable JavaScript) dans un même
+document, ce qui le rend très flexible pour les utilisateurs travaillant
+avec plusieurs langages. Interactivité : Il permet l'intégration facile
+de contenus interactifs, comme les visualisations interactives et les
+widgets, sans besoin de packages supplémentaires.
+
+Principalement pour R : R Markdown est conçu principalement pour les
+utilisateurs de R, bien qu'il supporte également l'intégration de code
+Python et SQL à travers des chunks. Moins de langages supportés :
+Comparé à Quarto, il supporte un nombre plus limité de langages de
+programmation.
+
+------------------------------------------------------------------------
+
+# Formats de Sortie :
+
+Diversité des formats : Quarto peut générer des documents dans une
+variété de formats (PDF, HTML, Word, ePub, slides, etc.), ainsi que des
+sites web complets et des blogs. Thèmes et mise en page : Il offre une
+grande variété de thèmes et de mises en page, avec des options de
+personnalisation avancées.
+
+R Markdown supporte plusieurs formats de sortie (HTML, PDF, Word,
+slides), mais avec moins de flexibilité et de personnalisation que
+Quarto. Thèmes et mise en page : Offre des thèmes et des options de mise
+en page, mais elles sont souvent moins flexibles et moins nombreuses.
+
+------------------------------------------------------------------------
+
+# Gestion des Projets :
+
+Projets Quarto : Il permet la création de projets structurés, facilitant
+la gestion de documents multiples et de fichiers de configuration.
+Workflow intégré : Supporte un workflow intégré pour les documents
+complexes, y compris les citations, les bibliographies, et les
+références croisées.
+
+R Markdown est souvent utilisé pour des documents individuels, bien
+qu'il puisse être utilisé dans des projets plus grands avec RStudio.
+Workflow : Moins de support intégré pour les workflows complexes par
+rapport à Quarto.
+
+------------------------------------------------------------------------
+
+![](images/pho1.png){fig-align="center" width="400"}
+
+------------------------------------------------------------------------
+
+# Présentation de l'environnement Quarto
+
+## Creation d'un fichier quarto
+
+Quarto nous propose plusieurs modèle de sortie pour nos documents. En
+effet nous pouvons generer des documents sous format world, powerpoint,
+html, powerpoint. Elle nous offre une large game de document sous
+plusieurs extensions.
+
+![](images/format1.png){fig-align="center" width="350"}
+
+------------------------------------------------------------------------
+
+# Structure d'un document Quarto
+
+Par défaut, la page qui s'affiche est la suivante :
+
+![](images/affi1.png){width="571"}
+
+------------------------------------------------------------------------
+
+Un document Rmarkdown est composé de trois parties :
+
+-   YAML (des méta-données)
+-   texte
+-   code (code chunks)
+
+------------------------------------------------------------------------
+
+# YAML ( méta-données)
+
+L'en-tête d'un document Quarto (parfois appelé YAML ) est délimité par
+deux lignes de pointillés et contient les métadonnées du document
+(titre, auteurs, options générales de mise en page. . .). Il contient au
+minimum le titre du document et le format de sortie. Il peut être
+enrichi d'autres champs pour modifier certaines métadonnées (par exemple
+la date) ou le style du document compilé.
+
+![](images/ima1.png){fig-align="center" width="532"}
+
+------------------------------------------------------------------------
+
+## II.2.3 Table des matières
+
+Pour inclure une table des matières dans un document Quarto généré avec
+RStudio, vous pouvez utiliser l'option **toc: true** (*toc : true dans
+le bloc YAML* ) dans les métadonnées YAML.
+
+![](images/ima2.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+# Quelques régles pour les mises en Forme
+
+![](images/ima3.png){fig-align="center" width="417"}
+
+------------------------------------------------------------------------
+
+Pour faire plus simple
+
+Vous avez juste au dessus de la barre de navigation
+
+![](images/ima4.png){fig-align="center"}
+
+Cela vous permet de d'acceder directement à toutes les options decrites
+plus haut.
+
+------------------------------------------------------------------------
+
+## Code (Chunks)
+
+En plus du texte libre que vous mettre dans votre fichier Quarto, un
+document Quarto peut contenir des blocs de code sous plusieurs langages,
+
+![](images/format2.png){fig-align="center" width="278"}
+
+Vous pouvez inclure n'importe quel type de langage dans votre document
+selon vos preference
+
+------------------------------------------------------------------------
+
+## Exemple de Code (Chunks)
+
+ceci est un exemple de code html mis dans un document quarto
+
+![](images/ima6.png){fig-align="center" width="348"}
+
+------------------------------------------------------------------------
+
+# Personnalisation d'un document R markdown
+
+| Col1 | Col2 | Col3 |
+|------|------|------|
+|      |      |      |
+|      |      |      |
+|      |      |      |
+
+## Insertion de tableau
+
+La creation de tableau dans quarto est très facile:
+
+Vous pouvez inserer un tableau diectement a partir de l'onglet au dessus
+avec Table
+
+![](images/ima7.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+Vous avez la possibilité ainsi de la dimension de votre tableau sans
+faire des barres comme dans Rmarkdown 😅
+
+![](images/ima8.png){fig-align="center"}
+
+Vous pouvez configurer votre tableau à votre convenance
+
+------------------------------------------------------------------------
+
+Exemple:
+
+| Classe | Effectif | Score |
+|--------|----------|-------|
+| ISE 1  | 30       | 100   |
+| AS 1   | 29       | 80    |
+| ISEP   | 11       | 25    |
+
+------------------------------------------------------------------------
+
+## III.4 Insertion de lien
+
+Quarto vous permet de créer des liens qui facilite la navigation vers le
+web ,local ou même dans notre document.
+
+-   **Insersion du lien :**
+
+La methode est très simple. vous pouvez le faire directement dans la
+partie onglet
+
+**Exemple :**
+
+![](images/ima9.png){fig-align="center" width="368"}
+
+------------------------------------------------------------------------
+
+# Insertion d'images
+
+## Insertion d'images
+
+Pour inserer des images vous pouvez le faire depuis la barre des onglets
+
+![](images/ima10.png){fig-align="center" width="329"}
+
+------------------------------------------------------------------------
+
+## Equations mathématiques
+
+Pour insérer des équations mathématiques dans un document Quarto, on
+utilise de la syntaxe LaTeX.
+
+Vous pouvez inclure des equations à partir de `Insert` situé sur
+l'onglet et ensuite vous pourrez
+
+![](images/ima11.png){fig-align="center"}
+
+Le inline Math est utlisé pour des syntaxes latex qui peuvent contenir
+sur une seule ligne
+
+C'est tout le contraire du Display Math
+
+------------------------------------------------------------------------
+
+Exemple 1 :
+
+![](images/ima12.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+# Insertion de liste
+
+Pour inserier des listes qu'il soit ordonné ou pas vous avez la
+possibilité de la faire a partir de l'onglet avec
+
+![](images/ima13.png){fig-align="center"}
+
+Exemple:
+
+1.  Alagbe
+
+2.  Ndione
+
+3.  Ngom
+
+4.  YATABARE
+
+------------------------------------------------------------------------
+
+# **Quarto Dashboards**
+
+Les tableaux de bord Quarto facilitent la création de tableaux de bord
+interactifs en utilisant Python, R, Julia et Observable :
+
+Exemple:
+
+![](images/dashb1.png){fig-align="center" width="415"}
+
+------------------------------------------------------------------------
+
+# Creation de Site Web avec Quarto
+
+La creation de site web sur quato est assez facile. Vous pouvez suivre
+ces instructions
+
+![](images/web1.png){fig-align="center" width="509"}
+
+------------------------------------------------------------------------
+
+# Exemple de site Web
+
+![](images/web3.png){fig-align="center" width="457"}
+
+------------------------------------------------------------------------
+
+# creation de ses Modeles
+
+Commencez par créer un fichier Quarto avec les configurations de base
+que vous souhaitez réutiliser. Par exemple, un modèle pour un rapport
+pourrait inclure la structure suivante : Vous devez d'abord creer et
+importer le modele comme dans cet exemple.
+
+![](images/ens5.png){fig-align="center" width="332"}
+
+------------------------------------------------------------------------
+
+# Cas pratiques
+
+Lien vers le site web crée avec Quarto:
+
+------------------------------------------------------------------------
+
+# Bibliographie
+
+-   Cours de R avancé sur l'analyse de données pour la genereration du
+    rapport
+
+-   www.quarto.com (site officielle de Quarto)
+
+-   https://github.com/quarto-dev/quarto-web ( github.com)
+
+-   https://github.com/Openscapes/quarto-website-tutorial(github.com)
+
+-   https://github.com/andrewheiss/hikmah-academic-quarto (github.com)

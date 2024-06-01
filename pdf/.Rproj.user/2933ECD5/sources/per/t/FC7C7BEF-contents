@@ -1,0 +1,922 @@
+---
+title: "Quarto"
+author: " Cheikna Amala YATABARE"
+format: pdf
+editor: visual
+header-includes: "\\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
+\\usepackage{mathptmx}
+\\usepackage[french,]{babel}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
+\\usepackage[table, xcdraw, dvipsnames]{xcolor}
+\\usepackage{graphicx}
+\\usepackage{hyperref}
+\\usepackage{tikz}
+\\usepackage{fancyhdr}
+% For heading and footers, les entêtes et les pieds de pages 
+
+%\\frenchbsetup{StandardLists=true}
+% à inclure si on utilise 
+
+%\\usepackage[french]{babel}
+\\usepackage{enumitem}
+% pour les items numérotés
+
+%\\usepackage[Lenny]{fncychap} 
+\\usepackage{multicol}
+% Pour diviser la page, la moitié
+
+%\\usepackage{pdfpages}
+% Pour importer des pdf
+
+%\\usepackage{multirow}
+
+%\\usepackage{array}
+% environnement nécessaire pour les maths
+
+\\usepackage{amsmath,amssymb}
+% environnement nécessaire pour les maths
+
+\\usepackage{iftex} 
+\\usepackage{textcomp} 
+\\usepackage[]{microtype}
+\\usepackage{longtable,booktabs,array}
+% necessaire pour les longs tableaux 
+
+\\usepackage{calc}
+\\usepackage[Conny]{fncychap}
+\\usepackage{setspace}
+% pour l'espacement, l'interligne
+
+\\usepackage{MnSymbol}
+\\definecolor{gre}{RGB}{101, 191, 127}
+\\definecolor{gree}{RGB}{7, 135, 44}
+\\usepackage[most, many]{tcolorbox}
+\\geometry{hmargin  = 3cm, vmargin = 2 cm}
+% pour régler les marges
+
+\\renewcommand\\thesection{\\Roman{section}}"
+---
+
+```{=tex}
+
+%output:
+%  pdf_document:
+%    keep_tex: yes
+%    number_sections: yes
+%    fig_caption: yes
+%    toc: no
+%    includes:
+%     in_header: header.tex
+%  word_document: default
+%  html_document:
+%    df_print: paged
+```
+{{< pagebreak >}}
+
+![](images/final.pdf.png){fig-align="center"}
+
+{{< pagebreak >}}
+
+```{=tex}
+\textcolor{blue}{\tableofcontents}
+\listoftables
+\listoffigures
+```
+{{< pagebreak >}}
+
+```{=tex}
+\renewcommand{\headrulewidth}{1.5pt}
+\let\oldheadrule\headrule                            
+\renewcommand{\headrule}{\color{blue}\oldheadrule}% Add colour to \headrule
+\renewcommand{\footrulewidth}{1.5pt} 
+\let\oldfootrule\footrule%
+\renewcommand{\footrule}{\color{blue}\oldfootrule}% Add colour to \headrule
+\pagestyle{fancy}        %Default page style 
+\lhead{\includegraphics[scale = 0.2]{figures/logo.png}}   
+\lhead{\scriptsize{R avec Quarto}} % left head entête gauche
+\chead{} % entête Au centre
+\rhead{\textcolor{black}{2024}} % right head entête à droite
+\lfoot{\textcolor{black}{ENSAE}} % pieds de page gauche 
+\rfoot{YATABARE} % Au centre du pied de page 
+%
+```
+# Introduction:
+
+## **Qu'est ce que Quarto?**
+
+Quarto est un outil open-source développé par RStudio, conçu pour la création de documents dynamiques et interactifs, en s'appuyant sur des technologies comme Pandoc, Jupyter, et R Markdown. Il permet aux utilisateurs de générer des documents dans divers formats, tels que HTML, PDF, Word, et bien plus, en intégrant du code provenant de plusieurs langages de programmation.
+
+### **Sources d'Information sur Quarto**
+
+Pour en savoir plus sur Quarto et ses fonctionnalités, vous pouvez consulter les sources suivantes :
+
+1.  **Site officiel de Quarto**:
+
+    -   Le site officiel de Quarto offre une documentation complète, des tutoriels et des exemples pour commencer avec Quarto.
+
+    -   Quarto Documentation
+
+2.  **RStudio Blog**:
+
+    -   Le blog de RStudio contient des articles et des annonces sur Quarto, y compris des guides pratiques et des études de cas.
+
+    -   RStudio Blog
+
+3.  **GitHub Repository**:
+
+    -   Le dépôt GitHub de Quarto contient le code source, les tickets d'incidents, et les discussions sur le développement de Quarto.
+
+    -   [Quarto sur GitHub](https://github.com/quarto-dev/quarto-cli)
+
+4.  **Quarto YouTube Channel**:
+
+    -   La chaîne YouTube de Quarto propose des vidéos tutorielles et des webinaires pour apprendre à utiliser Quarto.
+
+    -   [Quarto sur YouTube](https://www.youtube.com/c/QuartoPub)
+
+5.  **RStudio Community**:
+
+    -   La communauté RStudio offre des forums de discussion où les utilisateurs de Quarto peuvent poser des questions, partager des conseils, et trouver des solutions à leurs problèmes.
+
+    -   RStudio Community
+
+### **Utilisation des Sources dans Quarto**
+
+Pour intégrer et utiliser ces ressources dans vos projets Quarto, voici quelques conseils :
+
+#### **Documentation et Tutoriaux**
+
+-   **Accéder à la Documentation**:
+
+    -   La documentation officielle est le point de départ pour toute question ou besoin spécifique concernant Quarto. Elle couvre tous les aspects de l'utilisation de Quarto, de l'installation à la personnalisation avancée des documents.
+
+-   **Suivre les Tutoriels**:
+
+    -   Les tutoriels pas à pas disponibles sur le site officiel et la chaîne YouTube sont extrêmement utiles pour les débutants comme pour les utilisateurs avancés cherchant à approfondir leurs connaissances.
+
+#### **Collaboration et Assistance**
+
+-   **Participer à la Communauté**:
+
+    -   Rejoignez la communauté RStudio pour interagir avec d'autres utilisateurs de Quarto, poser des questions et partager des solutions. C'est également un excellent moyen de rester à jour sur les dernières nouveautés et meilleures pratiques.
+
+-   **Contribuer sur GitHub**:
+
+    -   Si vous rencontrez des bugs ou avez des suggestions d'amélioration, vous pouvez contribuer directement via le dépôt GitHub de Quarto. Vous pouvez également y consulter les discussions et les problèmes ouverts pour voir ce sur quoi la communauté travaille actuellement.
+
+### 
+
+Quarto est un outil puissant et flexible pour la création de documents dynamiques et interactifs, soutenu par une solide communauté et une documentation exhaustive. En utilisant les ressources disponibles sur les plateformes mentionnées, vous pouvez maximiser votre utilisation de Quarto et améliorer la qualité de vos documents.
+
+## **Avantage de Quarto**
+
+Tout comme Rmarkdown, Quarto a les memes fonctionnalités que Rmarkdown. En effet elle peut faire tout ce que Rmarkdown peut faire en allant de la generation des documents de qualité à de magnifiques presentation powerpoint. Son avantage par rapport à Rmarkdown reside dans sa facilité d'utilisation. Elle ne necessite pas la maitrise des differentes syntaxes d'ecriture comme le necessiterait Rmarkdown. On peut meme le comparer à l'ecriture d'un fichier sur microsoft office word à la seule difference qu'elle inclut l'utilisation de code que ce soit sur R, python, sql...
+
+## **Modèle de sortie d'un document Quarto**
+
+Quarto nous propose plusieurs modèle de sortie pour nos documents. En effet nous pouvons generer des documents sous format world, powerpoint, html, powerpoint. Elle nous offre une large game de document sous plusieurs extensions.
+
+![](images/format1.png){fig-align="center"}
+
+## **Mettre du code dans un fichier Quarto**
+
+Tout comme Rmarkdown, nous avons la possibilité d'inclure un grand nombre de zone pour inclure du code. En effet on appelle ces zones des chunks: Ces zones grisatres nous premettent d'inclure du code R, python, Sql, CSS, JAVA...
+
+![](images/format2.png){fig-align="center"}
+
+l'utilisation de R est definie par defaut dans les chunks, donc nous n'avons pas besoin de packages specifiques pour pouvoir l'utiliser. Cependant à la difference des autres languages, elle necessite l'installation de certains packages par exemple dans le cas de python, il est necessaire d'installer le package reticulate pour pouvoir l'utiliser.
+
+## **Installation de Quarto**
+
+Pour utiliser Quarto avec R, vous devez installer le package R **`quarto`**. Le package **`quarto`** fournit les outils nécessaires pour travailler directement avec Quarto dans R.
+
+Voici les étapes pour installer et utiliser Quarto avec R :
+
+1.  **Installer l'interface en ligne de commande Quarto (CLI)** : Tout d'abord, vous devez installer l'interface en ligne de commande Quarto. Vous pouvez la télécharger et l'installer depuis le site web de Quarto.
+
+2.  **Installer le package R `quarto`** :
+
+    ![](images/format3.png)
+
+Si celà ne fonctionne pas, il suffit de reinstaller R et Rstudio et de reprendre la procedure. Apres quoi, vous pouvez maintenat l'installer à partir de de la fonction **library(quarto).**
+
+Enfin à partir de l'onglet file, vous avez accès à Quarto pour l'utiliser pleinement.
+
+# Utilisation de Quarto:
+
+## Le Visual de Quarto
+
+Le visual de Quarto, ou éditeur visuel de Quarto, est un outil intégré qui facilite la création et la modification de documents Quarto (fichiers **`.qmd`**). Cet éditeur fournit une interface conviviale qui permet d'insérer facilement des éléments comme des citations, des images, des tableaux et d'autres composants typiques de documents Markdown sans avoir à manipuler directement le code Markdown.
+
+### **Fonctionnalités de l'éditeur visuel de Quarto**
+
+1.  **Insertion de citations**
+
+    -   **Dialogue d'insertion** : Vous pouvez insérer des citations via le menu **`Insert -> Citation`**. Ce dialogue permet de rechercher des citations par DOI, de les importer depuis votre bibliothèque Zotero, ou de les trouver dans des bases de données publiques comme Crossref, PubMed et DataCite.
+
+    -   **Construction du fichier de bibliographie** : L'éditeur visuel facilite la construction du fichier **`.bib`** et génère la syntaxe de citation Markdown correspondante.
+
+2.  **Insertion de figures et tableaux**
+
+    -   **Figures** : Vous pouvez insérer des images en utilisant le menu **`Insert -> Image`**, ce qui permet de choisir des images depuis votre ordinateur et de les insérer avec les bonnes options de mise en forme.
+
+    -   **Tableaux** : Vous pouvez insérer des tableaux en utilisant le menu **`Insert -> Table`**. L'éditeur visuel offre une interface pour créer et modifier des tableaux sans écrire le code Markdown pour chaque cellule.
+
+3.  **Gestion des sections et de la table des matières**
+
+    -   **Sections** : Vous pouvez ajouter et organiser des sections facilement en utilisant des outils visuels pour insérer des titres et sous-titres.
+
+    -   **Table des matières** : L'éditeur visuel peut vous aider à ajouter une table des matières en configurant les options YAML appropriées sans avoir à les écrire manuellement.
+
+4.  **Insertion de blocs de code**
+
+    -   **Blocs de code R, Python, etc.** : Vous pouvez insérer des blocs de code pour différents langages de programmation en utilisant le menu **`Insert -> Code Chunk`**. L'éditeur visuel fournit des options pour configurer le type de bloc de code et ses paramètres.
+
+### **Exemple d'utilisation de l'éditeur visuel**
+
+1.  **Créer un nouveau document Quarto**
+
+    -   Ouvrez RStudio et allez dans **`File -> New File -> Quarto Document`**.
+
+2.  **Ajouter une citation**
+
+    -   Placez le curseur à l'endroit où vous voulez insérer la citation.
+
+    -   Allez dans **`Insert -> Citation`**.
+
+    -   Recherchez la citation par DOI, sélectionnez la référence désirée et cliquez sur "Insert".
+
+3.  **Insérer une image**
+
+    -   Placez le curseur à l'endroit où vous voulez insérer l'image.
+
+    -   Allez dans **`Insert -> Image`**.
+
+    -   Choisissez l'image depuis votre ordinateur et configurez les options de mise en forme (légende, alignement, etc.).
+
+4.  **Ajouter une table des matières**
+
+    Expliquer plus en bas😊
+
+L'éditeur visuel de Quarto simplifie grandement la création et l'édition de documents complexes en fournissant des outils visuels pour insérer et configurer des éléments courants comme les citations, les images, les tableaux et les sections. Il permet également de gérer facilement les paramètres pour rendre les documents plus dynamiques et adaptables. Cela rend Quarto accessible même aux utilisateurs qui ne sont pas familiers avec la syntaxe Markdown ou YAML.
+
+## **Description de l'environnement de Quarto**
+
+Le document Quarto comprend 3 parties que sont **`l’en-tête (YAML)`**`, le texte et les blocs de codes` tous les trois forment le corps du document. Dans l’en-tete sont précisés des formats additionnels pour le document (Table de matières, références s’il y en a, des packages Latex à inclure si possible).
+
+**Image d'un exemplaire de YAML**
+
+![](images/format4.png){fig-align="center"}
+
+Quelques astcuces que vous pouvez utilisez pour le corps du devoir:
+
+1.  **Insertion des titres**
+
+    Pour insérer un nouveau titre, nous utilisons sur la barre, l'onglet **`Normal`**. En effet, nous avons à l'interieur de cet onglet, plusieurs niveaux de titre que nous pourrons utiliser pour rendre plus esthetique nos presentations. nous avons jusqu'a 6 titres que nous pourrons utiliser.
+
+    **Titre 1: niveau 1**
+
+    **Titre 2: niveau 2**
+
+    **Titre 3: niveau 3**
+
+    **Titre 4: niveau 4**
+
+    **Titre 5: niveau 5**
+
+    **Titre 6: niveau 6**
+
+    par defaut le texte est sous format `Normal`
+
+2.  **Style du texte**
+
+Pour écrire le texte en gras il suffit d'appuyer sur la touche **`B`** qui se trouve sur la barre, ou on peut appyer sur format pour l'obtenir (c'est ecrit B Bold).
+
+Pour écrire le texte en Italique il suffit d'appuyer sur la touche **`I`** qui se trouve sur la barre, ou on peut appyer sur format pour l'obtenir (c'est ecrit I Italique).
+
+Pour écrire le texte en Italique et en Gras il suffit d'appuyer sur la touche **`I`** et **`G`** qui se trouve sur la barre, ou on peut appyer sur format pour l'obtenir (c'est ecrit I Italique et G Bold).
+
+Pour souligner un texte, il suffit d'aller dans l'onglet Format et d'appuyer sur [**`U`**]{.underline} (Underline).
+
+Pour barrer un texte, il suffit d'allez dans l'onglet Format et au niveau de `Texte` on appuie sur `Strickout.`
+
+Pour mettre un mot en exposant, il suffit d'aller dans Format et au niveau de `Texte` on appuie sur `Superscript`
+
+Pour mettre un mot en indice, il suffit d'aller dans Format et au niveau de `Texte` on appuie sur `Subscript.`
+
+Pour mettre un mot en majuscule ou en miniscule selon le format ou il initialement ecrit , il suffit d'aller dans Format et au niveau de `Texte` on appuie sur `Small Caps`**.**
+
+3.  **Mise en couleur**
+
+    Pour les mises en couleur, il faudra une maitrîse du langage CSS. Par exemple supposons que nous voulons metrre le texte suivant: `Je suis a l'ENSAE` en vert, je sélectionne d’abord mon texte , ensuite je vais dans `Format ⟹ Div` et dans l’attribut `CSS Style` je précise mon code pour la couleur. Cependant il peut arriver que je veuilles que seul mon texte `Etudiant` soit en vert. Là je fais la même chose mais au lieu d’insérer une div, j’insère un span.
+
+    comme illustration de ce qui a été dit
+
+    ::: {style="color: green;"}
+    Je suis a l'ENSAE.
+    :::
+
+    pour mettre uniquement un element du texte en couleur on peut utilise la meme methode juste qu' a la difference on met un spam
+
+    par exemple
+
+    ::: {style="color: red;"}
+    Etudiant
+    :::
+
+4.  **Bordure de texte**
+
+    pour encadrer un texte, il faut egalement utilisé du css. On peut encadrer tout le texte ou une partie du texte.
+
+    comme illustration de ce qui a été dit:
+
+::: {style="border: 1px solid yellow; padding: 10px;"}
+Je suis à l'ENSAE de Dakar
+:::
+
+5.  Mise en forme (positionnement de texte):
+
+    Pour la position du texte (centrée, justifié, à droite ou à gauche)nous utilisont du code CSS. Nous utilisons les elements suivants:
+
+    pour centrer un texte on utilise `text-align; center;`
+
+::: {style="text-align: center;"}
+Texte Centré : je suis en ISE1 Eco
+:::
+
+Pour mettre le texte à gauche nous utilisons: t`ext-align; left;`
+
+::: {style="text-align: left;"}
+Text Centrée à gauche Je suis en ISE1 math
+:::
+
+Pour mettre le texte à droite nous utilisons: `text-align; right;`
+
+::: {style="text-align: right;"}
+Je suis en ISE1 Cycle long
+:::
+
+## **Description du YAML(En tete d'un fichier quarto)**
+
+Pour definir le titre dans l'entete, il suffit de mettre `Title: "Nom du document"`
+
+Pour definir le sous titre dans l'entete, il suffit de mettre Subtitle: "Sous titre"
+
+Pour definir les auteurs dans l'entete, il suffit de mettre Authors: `"YATABARE-Hamid-Sadibou-Maty"`
+
+Pour definir la date dans l'entete, il suffit de mettre **date: 14/03/2024**
+
+Pour definir la table de matiere dans l'entete, il suffit de mettre
+
+**Output:**
+
+> **html_document:**
+
+> **pour mettre une table de matiere**
+
+> **toc : true**
+
+> **Pour mettre des numeros de lignes**
+
+> **number_sections:true**
+
+> **Pour avoir une table de matieres flottantes**
+
+> **toc-float: true**
+>
+> **toc-title:** pour le titre de la table de matière
+>
+> **lof:** pour afficher la liste des figures
+>
+> **lot:** pour afficher la liste des tableau.
+>
+> **code-line-numbers:** pour afficher le numero de ligne dans les blocks de code.
+
+Pour la sortie du document, on peut decider d'afficher le document avec les codes et les erreurs ou pas. Pour ne pas les afficher, on peut proceder de la sorte:
+
+> **execute:**
+
+> **echo:** false
+
+> **warning:** false
+
+De meme on a la possibilité d'inclure le code avec les resulats ou pas:
+
+on le fait de la sorte:
+
+**include** : TRUE/FALSE
+
+**output** : false/true pour afficher les resulats des chunks ou pas.
+
+**include-before-body :** pour afficher la table de matiere au debut du fichier.
+
+**include-after-body** : pour afficher la table de matiere enfin du fichier.
+
+**code-fold: true** pour afficher un zone d'affichage du code quand on veut ou pas. cela est possible uniquement avec les fichier avec des sortie html.
+
+l'instruction ci-dessous permet de generer les 3 fichiers à savoir html, pdf, word directement à partir du YAML.
+
+**format:**
+
+**html:**
+
+| **code-fold: true**
+
+| **html-math-method: katex**
+
+**pdf:**
+
+**geometry:**
+
+| **-top=30mm**
+
+| **- left=30mm**
+| 
+
+**docx: default**
+
+pour donner un aspect esthetique a votre sortie pour les codes vous pouvez utiliser egalement le code suivant :
+
+highlight-style: github
+
+cela permet de donner un sortie beaucoup plus jolie a votre document
+
+## **Presentation des chunks codes**
+
+Quarto dispose d'une large game de chunk pour different format de langage: nous vous presenterons la forme de certains langage de programmation couramment utilisé sur des fichiers Quarto
+
+> Pour les codes R, l'affichage est le suivant:
+
+```{r}
+library(ggplot2)  
+head(iris)
+
+ggplot(iris ,aes(x = Sepal.Length , y = Sepal.Width))+             
+geom_smooth()
+```
+
+Donc nous avons la possibilité de realiser des graphiques et de faire tous ce que l'on pouvait faire d'habitude sur R.
+
+> Pour les codes python nous pouvons proceder de la sorte:
+
+nous avons au niveau de la barre des onglets **Insert** et on appuie sur **Excecutive Cell** a partir de la nous pouvons choisir python pour obtenir un chunk python. Mais bien avant, il faudra avoir installer le package **reticulate**.
+
+`{python} for i in range(10):      print(i)}`
+
+Donc vous voyez deja que l'on peut faire du python sur R. il est possible pour nos travaux d'utiliser les modules pandas ou numpy selon le travail que l'on aimerait faire.
+
+Quarto dispose d'une possibilité d'inclure plusieurs langage a partir de cette commande que voici: **code block.** On peut l'obtenir à partir de **insert** et on appuie sur code block. A partir de cela, on met le langage de programmation que l'on souhaite utiliser bien sur en ayant le package necessaire pour l'utiliser sur R.
+
+> ## Etablir une table de matière:
+
+Cela se fait au niveau dU YAML. Nous y avons donnée en detail tous les éléments de comment cela se passe dans la section YAML.
+
+Voici comment vous pouvez mettre une table des matieres dans votre document Quarto
+
+![](images/forrmat5.png){fig-align="center"}
+
+Il suffit juste de selectionner toc: true. pour ceux qui concerne les argument supplementaires, vous pouvez inclure d'autres elements que nous avons definis dans le **`YAML`**
+
+## **Numerotation des sections:**
+
+Pour creer une numeration sur quarto, il suffit d'aller au niveau de `Format` et à l'interieur on à l'onglet `Bullet et Numbering` qui permet de creer des listes. Ces listes peuvent etre ordonnées ou non selon ce que l'on veut faire. par exemple:
+
+-   Yatabare
+
+-   Hamib
+
+-   Sadibou
+
+-   Maty
+
+    liste non ordonnée
+
+    Ou on peut proceder par numerotation:
+
+1.  Maty
+
+2.  Sadibou
+
+3.  Hamib
+
+4.  Yatabare
+
+    liste ordonnée
+
+Pour ajouter des citations, des notes de bas de page et une bibliographie dans un document Quarto, ainsi que pour inclure des numéros de page, des chapitres ou exclure les noms des auteurs, vous pouvez suivre différentes syntaxes et options.
+
+## **Ajouter des citations dans Quarto**
+
+Pour ajouter des citations, utilisez le fichier de bibliographie (.bib) et la syntaxe de citation Markdown. Voici un exemple de base :
+
+![](images/for1.png){fig-align="center"}
+
+Ensuite, dans le texte de votre document, vous pouvez ajouter des citations comme ceci :
+
+![](images/for2.png){fig-align="center"}
+
+## **Générer le fichier de bibliographie (.bib)**
+
+Vous pouvez générer un fichier **`.bib`** en utilisant des outils comme Zotero. Voici un exemple de contenu pour **`references.bib`** :
+
+![](images/for3.png){fig-align="center"}
+
+## **Ajouter des numéros de page et des chapitres**
+
+Pour inclure des numéros de page et des chapitres dans les citations, utilisez la syntaxe suivante :
+
+![](images/for4.png){fig-align="center"}
+
+## **Exclure les noms des auteurs**
+
+Pour exclure les noms des auteurs dans une citation parenthétique, utilisez le préfixe et le suffixe :
+
+![](images/for5.png){fig-align="center"}
+
+Exemple D'un fichier comprenant le une bibliographie,
+
+En suiivant ces informations :
+
+-   **Insertion de citations** : Allez dans **`Insert -> Citation`**.
+
+-   **Sources des citations** : Vous pouvez ajouter des citations à partir de leur DOI, de votre bibliothèque Zotero, ou de bases de données publiques comme Crossref, PubMed et DataCite.
+
+-   **Construire le fichier de bibliographie** : Cette fonctionnalité vous permet de construire facilement le fichier **`.bib`** et de générer la syntaxe de citation
+
+    vous obtiendrez enfin:
+
+![](images/for6.png){fig-align="center"}
+
+## Option Param du YAML
+
+L'option **`params`** de Quarto permet de définir des paramètres personnalisés que vous pouvez utiliser dans votre document. Ces paramètres peuvent être utilisés pour rendre le document plus dynamique et adaptable, en permettant des modifications faciles de certains aspects du contenu sans avoir à éditer le texte principal.
+
+### **Utilisation des paramètres dans un document Quarto**
+
+#### **1. Définir des paramètres dans l'en-tête YAML**
+
+Vous pouvez définir des paramètres dans l'en-tête YAML de votre document **`.qmd`**. Voici un exemple :
+
+![](images/ens1.png){fig-align="center"}
+
+Voici un exemple complet d'un fichier **`.qmd`** utilisant des paramètres :
+
+![](images/ens2.png){fig-align="center"}
+
+## **Insertion d'image :**
+
+Pour inserer une image dans un fichier Quarto, il suffit d'appuyer sur l'onglet **Insert** situé sur la barre des taches et de selectionner **Figure/image.** A partir de cette commande, vous aurez la possibilité d'inclure tout les types de fichier dont vous aurez envie que ce soit de jpeg on du png.
+
+Par exemple pour du jpeg:
+
+![Logo de l'ANSD](images/ANSD.jpg){fig-align="center"}
+
+Vous avez egalement la possibilité de donner un titre à vos images. En effet en voulant l'inserer vous avons `caption` qui vous permet de mettre le titre de vos images.
+
+Maintenant il peut arriver qu’on veuille insérer deux image l’une à coté de l’autre et non l’une après l’autre. Pour cela, nous devons insérer d’abord une div et préciser dans son attribut other que notre div contient 2 colonnes par `layout-ncol= 2`
+
+En voici un exemple
+
+::: {layout-ncol="2"}
+![](images/ANSD.jpg)
+
+![](images/Logo-senegal.jpg){fig-alt="Erreur" fig-align="right" width="316"}
+:::
+
+<div>
+
+{layout-ncol =" 2" fig-align="left"}
+
+</div>
+
+De meme, on peut positionner l'image que nous voulons que ce soit à gauche, à droite ou au milieu. Cela s'effectue toujours à partir de figure ou on peut selectionner l'option qui nous convient.
+
+Egalement au lieu de telecharger le fichier on peut inclure le lien(URL) du fichier si celui ci se trouve sur internet. Toujours cela se passe toujour de la meme facon que le telechargement juste qu'il faut inclure l'URL à la place de l'image.
+
+Aussi nous avons la possibilité d'inserer 2 ou plusieur images l'un à coté de l'autre. Cela se fait de cette manière:
+
+```{r}
+library(ggplot2)  
+library(gridExtra)   
+plot1 <- ggplot(cars, aes(x = speed, y = dist, color = "blue")) +     geom_point(alpha = 0.5)       
+plot2 <- ggplot(cars, aes(x = speed, y = dist, color = "yellow")) +   geom_smooth (alpha = 0.5)    
+grid.arrange(plot1, plot2, ncol = 2)
+```
+
+## Insertion de Liens (Url, etc.)
+
+Pour mettre un lien dans un fichier Quarto, la methode est simple, il faudra aller dans `Insert`. sur la base des onglets et selectionner `link` .Ensuite mettre le lien et préciser le texte à afficher et sur lequel cliquer pour avoir la page. Voici un exemple:
+
+[Utiliser Quarto sur VScode](https://quarto.org/docs/tools/vscode.html)
+
+sur Ce lien, il est expliqué comment utiliser directement quarto sur VScode pour ceux et celle qui voudront l'utiliser. A la difference de Rstudio, elle utilise d'autres commande.
+
+## **Insertion de tableau:**
+
+-   pour inserer des tableaux dans un fichier Quarto, la methode est simple. Il suffit de selectionner `Table` qui se trouve au dessus sur la barre des onglets. Ainsi, Quarto vous offre la possibilité de choisir le nombre de lignes et de colonnes selon notre convenance. Par exemple , pour creer un tableau de 2 lignes et de 2 colonnes. On peut proceder ainsi:
+
+    | Variables |     effectifs     |
+    |-----------|:-----------------:|
+    | sexe      | masculin; feminin |
+    | age       |    0 à 21 ans     |
+
+autres exemple, nous pouvons donner un tableau à 4 lignes et 1 colonnes:
+
+nous pouvons egalement decider de placer le tableau à gauche, a droite, ou au milieu. On peut le faire avec l'option `Table` et ensuite on selectionne `align column` et on choisit l'option selon notre travail.
+
+| Ensae |
+|:-----:|
+| ISE1  |
+| ISEP3 |
+|  AS1  |
+| ISE2  |
+
+| Nom     | prenom  | classe |
+|---------|---------|--------|
+| NGOM    | Sadibou | ISE1   |
+| Kone    | Chaka   | ISE1   |
+| Sangare | Gnaleen | ISE1   |
+
+Supposons mainteant que l'on veuille commenter le tableau mais que le commentaire se trouve à gauche du tableau. On place alors dans notre précédente div un texte à la place du deuxième tableau. voici un exemple:
+
+::: {layout-ncol="2"}
+![](images/ENSAE-Dakar-logo.png){fig-align="center"}
+
+C'est le logo de Quarto. Donc vous vyez bien que cela se met sur l'autrecoté de la figure.
+:::
+
+# Personnalisation du document
+
+## Insertion de page dans un fichier quarto:
+
+Pour inserer une page dans un fichiier quarto la demarche est la suivante: ils suffit d'aller dans l'option `Insert` et de selectionner `shortcode` a l'interieur de duquel on doit mettre cette instruction `{{<pagebreak>}}`
+
+{{< pagebreak >}}
+
+## Inserer des notes de bas de page:
+
+Il suffit d'insérer des notes de bas de page juste après le mot concerné. Pour cela cliquez `Insert - Footnote` . Ainsi, Une sorte de nouvelle page apparait en bas avec le numéro du bas de page que vous insérez.
+
+Par exemple. Quarto est semblable a Rmarkdown[^1].
+
+[^1]: le groupe sur Rmarkdown nous expliquera ce que designe reelement Rmarkdown
+
+## Insertion de formule
+
+il est à noté que l'ensemble des formules saisi dans un fichier Quarto necessite l'utilisation de code latex. Quarto nous facilite son utilisation, en effet dans l'onglet **Insert** on a **LaTEX Math** nous permet e saisir du code pour les formules. par exemple, nous pouvons utiliser du inline Math ou du display math selon la strcture de notre formule :
+
+Par exemple:
+
+1.  $$ E=mC^2  $$
+
+    ## Insérer des symboles ou emoji
+
+    On peut insérer les symboles dans Quarto en allant dans l'onglet `Insert - Special Character - Insert Unicode` ou encore `Insert - special character - Insert Emoji`
+
+    par exemple
+
+    je suis content😊
+
+    ## Insérer des liens hypertextes {#emoji}
+
+    On peut insérer egalement des des liens hypertextes vers des équations ou encore vers un tableau, une figure ou encore des titres. Pour ce faire il faudra d'abord préciser dans attributs l'ID du titre, texte ou figure. Ensuite vous allez dans l'onglet `Insert - Cross reference`.
+
+    Allez à @eq-lorenz
+
+    ## Insérer des notes
+
+    Si nous voulons mettre en exergue quelque chose dans un document, nous pouvons le faire en insérant un note `(callout)` en précisant le type que nous voulons `(Important, note...).`
+
+    par exemple:
+
+    ::: callout-important
+    **A retenir**
+
+    Ce texte est très important
+    :::
+
+    ::: callout-warning
+    **NB:**
+
+    Revoyez votre comportement.
+    :::
+
+    ## Insérer des références bibliothèque
+
+    Pour insérer une citation tirée d'un document pendant que nous écrivons, nous devons connaitre le DOI de la source. Le DOI est un identifiant que chaque article en ligne a et c'est propre à cet article. Autrement, deux artciles ne peuvent pas avoir le mm DOI.
+
+    Pour ce faire une fois que nous avons écrit notre citation, pour la sourcer nous insérons le DOI du fichier dans `Insert - Citation - DOI` et nous ajoutons le DOI du fichier. Automatiquement il insère ce fichier dans notre référence bibligraphique en bas. Ainsi il est important d'insérer un titre référence après le document que nous écrivons.
+
+    Par exmple
+
+    La vulgariation scientique est un prealable au developpement de l'Afrique [@coulombe2009].
+
+    ## Diagrammes:
+
+    Nous avons la possibilité d'inclure des diagrammes sur un fichier Quarto. Cela necessite la maitrise de Mermaid et de Graphviz. Par exemple on a:
+
+ceci est un exemple de diagramme .
+
+de me nous pouvons utiliser du graphViz pour nos diagrammes; voici un exemple de diagramme
+
+```{dot}
+ graph G {   layout=neato   courir -- intr;   intr -- runbl;   runbl -- courir;   run -- noyau;   noyau -- zombie;   noyau -- dormir;   noyau -- runmem;   dormir -- swap;   swap -- runswap;   runswap -- nouveau;   runswap -- runmem;   nouveau -- runmem;   dormir -- runmem;    }
+```
+
+Cela vous montre à quel point Quarto regroupe une large gamme de fonctionalité que vous pourrez utiliser dans vos travail.
+
+Egalement il est possible d'ajouter des forme sur un fichier :
+
+par exemple nous pouvons utiliser la syntaxe suivante dans un div `background: #2780e3; width: 350px; height: 350px; border-radius: 100px;`
+
+::: {style="background: #2780e3; width: 350px; height: 350px; border-radius: 100px;"}
+:::
+
+Enfin, nous pouvons ajouter des notes à notre document Quarto en tilisant cette syntaxe:
+
+Nous sommes ouvert à vos: `recommendations`, `conseils` et `suggestions.`
+
+Merci D'avoir pris du temps de visualiser cet document.
+
+# Pour aller plus loin:
+
+## Edition de Document Quarto
+
+Une fois votre Document rendu au format HTML, Vous avez la possibilité de le publier sur `RPubs`( un service gratuit de RStudio pour partager des document sur le Web) en cliquant sur l'icone souligné en rouge:
+
+![](images/Rpubs.png){fig-align="center"}
+
+Cela permet de publier votre document.
+
+Ou vous avez la possibilité egalement de le code suivant
+
+![](images/RPUB2.png)
+
+D'autres options sont possibles tels que l'utilisation de RStudio Connect et ShinyApps qui donnent un meuilleure appercu beaucoup plus détaillé de vos option de publication.
+
+Pour des information supplementaires au sujet des options de publication, vous pouvez suivre la documentation suivantes a partir du lien suivants : [Documentations sur la publication](https://quarto.org/docs/get-started/authoring/rstudio.html#publishing)
+
+# Apprendre Plus de Quarto:
+
+## Presentation
+
+Avec Quarto, vous avez la possibilité comme sur Rmarkdown de créer vos presentations Powerpoint, Beamer et Revealjs en utilisant la meme procedure que vous avez appris pour créer des document.
+
+1.  Introduction
+
+    Quarto prend en charge une variété de formats pour créer des diapositives notamment:
+
+    Il existe des avantages et des inconvénients à chacun de ces formats. Le format le plus performant de loin est revealjs, il est donc vivement recommandé à moins que vous n'ayez des exigences spécifiques de sortie Office ou LaTeX. Notez que les présentations revealjs peuvent être présenté
+
+    Ci-dessous, nous décrirons la syntaxe de base pour les présentations qui s'applique à tous les formats. Consultez les articles spécifiques au format pour des détails supplémentaires sur leurs capacités natives.
+
+### Creations de Diapositives:
+
+Pour creer des diapositives sur Quarto, aller sur `Files` et ensuite selectionner `new files` et apres selectionner `Quarto Presentation`
+
+![](images/pptx2.png){fig-align="center"}
+
+Apres avoir appuyé sur `Quarto presentation` vous avez le choix du modele que vous souhaitez executé pour votre presentation
+
+![](images/pptx3.png){fig-align="center"}
+
+Apres cela vous pouvez créer vos document comme vous le souhaitez.
+
+### Quelques regles à respectez pour les powerpoints
+
+Les structures uilisées dans le cadre de la conception de document reste valable egalement ici.
+
+Mais pour delimiter les slides de ses presentation, il faut utiliser la delimitation avec `- - -` comme dans l'exemple suivants:
+
+![](images/pptx4.png){fig-align="center"}
+
+Vous pouvez personnalisez vos powerpoints autant que vous le voulez. Voici la documentation necessaire pour vos travaux futurs:
+
+[Documentation pour le powerpoint](https://pandoc.org/MANUAL.html#structuring-the-slide-show)
+
+Egalement, par défaut, les listes numérotées et à puces dans les diapositives sont affichées en une seule fois. Vous pouvez remplacer cela globalement en utilisant l'option `incremental`. Par exemple :
+
+![](images/pptx5.png){fig-align="center"}
+
+# **Quarto Dashboards**
+
+Les dashboards de Quarto sont nouveau. Donc au cas ou vous n'arrivez pas a le trouvez directement sur votre RStudio, vous devez installer la nouvelle mise à jour de quarto pour l'obtenir.
+
+## Avantage de Quarto Dashboard
+
+Les tableaux de bord Quarto facilitent la création de tableaux de bord interactifs en utilisant Python, R, Julia et Observable :
+
+Publiez un groupe de visualisations de données connexes sous forme de tableau de bord. Utilisez une grande variété de composants, notamment Plotly, Leaflet, Jupyter Widgets, htmlwidgets ; graphiques statiques (Matplotlib, Seaborn, ggplot2, etc.) ; données tabulaires ; boîtes de valeur ; et annotations textuelles.
+
+Des mises en page flexibles et faciles à spécifier en lignes et en colonnes. Les composants sont redimensionnés de manière intelligente pour remplir le navigateur et adaptés à l'affichage sur les appareils mobiles.
+
+Rédigez votre contenu à l'aide de n'importe quel éditeur de notebook (JupyterLab, etc.) ou en markdown simple avec n'importe quel éditeur de texte (VS Code, RStudio, Neovim, etc.).
+
+Les tableaux de bord peuvent être déployés sous forme de pages web statiques (aucun serveur spécial requis) ou vous pouvez facultativement intégrer un serveur Shiny en arrière-plan pour une interactivité améliorée.
+
+Vous pouvez créer des mises en page hautement personnalisées et utiliser une grande variété de thèmes de tableau de bord, comme illustré dans ces exemples:
+
+![](images/dashb1.png){fig-align="center"}
+
+Nous allons ici parcourir un exemple simple pour illustrer les bases. Ensuite, nous fournirons des instructions détaillées sur la façon de commencer à construire vos propres tableaux de bord.
+
+Les tableaux de bord se composent de plusieurs composants :
+
+`Barre de navigation` — Icône, titre et auteur ainsi que des liens vers les sous-pages (si plus d'une page est définie).
+
+`Pages, Lignes, Colonnes et Onglets` — Les pages, les lignes et les colonnes sont définies à l'aide de titres markdown (avec des attributs optionnels pour contrôler la hauteur, la largeur, etc.). Les onglets peuvent être utilisés pour diviser davantage le contenu dans une ligne ou une colonne.
+
+`Cartes, Barres latérales et Barres d'outils` — Les cartes sont des conteneurs pour les graphiques, l'affichage des données et le contenu libre. Le contenu des cartes correspond généralement aux cellules de votre notebook ou document source. Les barres latérales et les barres d'outils sont utilisées pour présenter des entrées dans les tableaux de bord interactifs.
+
+Les tableaux de bord peuvent être créés soit à l'aide de notebooks Jupyter (.ipynb) soit à l'aide de Quartol (.qmd).
+
+### Creation de Dashboard sous Jupyter
+
+la creation de Dashboard sous Jupyter necessite que vous ayez Installé Jupyter ou Jupyterlab:
+
+Son environnement devrait ressembler à ceci:
+
+![](images/dash2.png){fig-align="center"}
+
+Par contre sous Rstudio, Cela se fait simplement en selectionnant `Dashboard` au niveau de `File` et `newfile.`
+
+Sous R vous aurez un apercu de ce genre quand vous commencerez à travailler avec `Quarto Dashboard`
+
+![](images/dash3.png){fig-align="center"}
+
+Pour plus d'information à ce sujet vous avez la documentation suivantes sur ce lien:
+
+[Dashboard Quarto](https://quarto.org/docs/dashboards/)
+
+# Creation de Site Web avec Quarto
+
+Les sites web Quarto sont un moyen pratique de publier des groupes de documents. Les documents publiés dans le cadre d'un site web partagent des éléments de navigation, des options de rendu et un style visuel.
+
+La navigation sur le site peut être assurée par le biais d'une barre de navigation globale, d'une barre latérale avec des liens, ou d'une combinaison des deux pour les sites qui ont plusieurs niveaux de contenu. Vous pouvez également activer la recherche textuelle intégrale pour les sites web.
+
+Les sites web Quarto peuvent être publiés sur une grande variété de destinations, y compris GitHub Pages, Netlify, Posit Connect, ou tout autre service d'hébergement statique ou serveur web intranet.
+
+## Utilisation sous Rstudio
+
+Pour créer un nouveau projet de site web dans RStudio, utilisez la commande `Nouveau Projet` et sélectionnez `Site Web Quarto` :
+
+![](images/web1.png){fig-align="center"}
+
+Apres cela il ne vous reste plus qu'a definir le nom de votre site et a commencer à travailler sur votre site. N'oubliez pas que tous ce que vous avez appris lors de la creation du dcument reste valable ici;
+
+![](images/web2.png){fig-align="center"}
+
+Cliquez sur le bouton "`Render`" pour prévisualiser le site web :
+
+![](images/web3.png){fig-align="center"}
+
+Donc en faisant cela vous avez votre site web que vous allez ensuite configurer avec les information que vous desirez.
+
+### Fichier de configuration
+
+Chaque site web a un fichier de configuration `_quarto.yml` qui fournit des options de site web ainsi que des valeurs par défaut pour les documents HTML créés dans le site. Donc vous devrez configurez au mieux votre entéte pour donner de la valeur à votre site Web.
+
+pour avoir de plus ample informations sur comment créer son site web, vous pouvez consullter la documentation suivante:
+
+[Site Web avec Quarto](https://quarto.org/docs/websites/)
+
+# definition de ses propres modeles
+
+Créer des modèles (templates) dans Quarto permet de standardiser et réutiliser la structure et le format de vos documents. Voici comment vous pouvez créer et utiliser des templates Quarto pour différents types de documents, comme des rapports, des présentations, ou des articles.
+
+### **1. Créer un modèle de base :**
+
+Commencez par créer un fichier Quarto avec les configurations de base que vous souhaitez réutiliser. Par exemple, un modèle pour un rapport pourrait inclure la structure suivante :
+
+#### **Exemple de modèle de rapport**
+
+![](images/ens5.png){fig-align="center"}
+
+### **2. Enregistrer le modèle :**
+
+Enregistrez ce fichier avec un nom significatif, par exemple, **`report-template.qmd`**.
+
+### **3. Utiliser le modèle dans un nouveau document :**
+
+Pour utiliser ce modèle, copiez simplement le contenu du fichier **`report-template.qmd`** dans un nouveau fichier Quarto ou utilisez l'inclusion de fichiers.
+
+#### **Exemple d'utilisation du modèle**
+
+![](images/ens6.png){fig-align="center"}
+
+Créez un nouveau fichier, par exemple, **`my-report.qmd`**, et copiez le contenu du modèle dedans. Vous pouvez ensuite personnaliser ce nouveau fichier selon vos besoins.
+
+### **4. Création de modèles pour d'autres formats :**
+
+Vous pouvez également créer des modèles pour d'autres formats de documents, comme des présentations ou des articles. Voici un exemple de modèle pour une présentation :
+
+#### **Exemple de modèle de présentation**
+
+![](images/ens7.png){fig-align="center"}
+
+Avec ces éléments, vous pouvez réutiliser et partager facilement vos modèles Quarto pour différents types de documents, assurant ainsi une standardisation et une facilité de création pour des documents futurs.
+
+{{< pagebreak >}}
+
+![](images/Blue%20White%20Minimalist%20Modern%20Yearly%20Business%20Report%20Cover%20A4%20Document.png){fig-align="center"}
